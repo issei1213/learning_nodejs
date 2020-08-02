@@ -1,21 +1,22 @@
 console.log("app.js稼働開始");
 
 const fs = require("fs");
-const os = require("os");
 
-// 独自で作成したファイルの呼び出し(相対パスになる)
-const notes = require("./notes.js")
-let result = notes.addNote();
-console.log(result);
+const notes = require("./notes.js");
+const e = require("express");
+
+const yargs = require("yargs");
 
 
-// osのusernameを返すオブジェクト
-let user = os.userInfo();
-console.log(user)
+let command = process.argv[2];
+console.log("コマンド：", command);
 
-// greeting.txtがなければ作成し、あればHello, world!を追加するオブジェクト
-// fs.appendFile("greeting.txt", "Hello," + user.username + "! あなたは" + notes.age + "才です。", function(err){
-//   if(err){
-//     console.log(err);
-//   }
-// })
+if (command === "add"){
+  console.log("メモを追加します。")
+} else if (command === "list"){
+  console.log("メモを一覧表示します。");
+} else if (command === "read"){
+  console.log("メモを個別表示します。");
+} else if (command === "remove"){
+  console.log("メモを削除します。");
+}
