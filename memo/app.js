@@ -1,12 +1,9 @@
 console.log("app.js稼働開始");
 
 const fs = require("fs");
-
 const notes = require("./notes.js");
 const e = require("express");
-
 const yargs = require("yargs");
-
 
 let command = process.argv[2];
 console.log("コマンド：", command);
