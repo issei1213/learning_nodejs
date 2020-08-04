@@ -7,17 +7,14 @@ const yargs = require("yargs");
 const argv = yargs.argv;
 // const { argv } = require("process");
 
-let command = process.argv[2];
-// console.log("コマンド：", command);
-
-console.log("yargs", argv);
+let command = argv._[0];
 
 if (command === "add"){
   notes.addNote(argv.title, argv.body);
 } else if (command === "list"){
-  console.log("メモを一覧表示します。");
+  notes.showAll();
 } else if (command === "read"){
-  console.log("メモを個別表示します。");
+  notes.readNote(argv.title);
 } else if (command === "remove"){
-  console.log("メモを削除します。");
+  notes.removeNote(argv.title)
 }
