@@ -9,11 +9,21 @@ let addNote = (title, body) => {
     body
   };
 
-  let notesString = fs.readFileSync("notes-data.json");
-  notes = JSON.parse(notesString);
+  try {
+    let notesString = fs.readFileSync("notes-data.json");
+    notes = JSON.parse(notesString);  
+  } catch(e){
 
-  notes.push(note);
-  fs.writeFileSync("notes-data.json", JSON.stringify(notes));
+  };
+  // 「note.title」
+  let duplicatedNotes = notes.filter(note => note.title === title) 
+
+  if (duplicatedNotes.length === 0 ){
+    notes.push(note);
+    fs.writeFileSync("notes-data.json", JSON.stringify(notes));
+  
+  };
+
 };
 
 let showAll = () => {
