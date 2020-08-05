@@ -1,7 +1,19 @@
 console.log("notes.js開始");
 
+const fs = require("fs");
+
 let addNote = (title, body) => {
-  console.log("メモを追加", title, body);
+  let notes = [];
+  let note = {
+    title,
+    body
+  };
+
+  let notesString = fs.readFileSync("notes-data.json");
+  notes = JSON.parse(notesString);
+
+  notes.push(note);
+  fs.writeFileSync("notes-data.json", JSON.stringify(notes));
 };
 
 let showAll = () => {
