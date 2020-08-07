@@ -39,7 +39,9 @@ let showAll = () => {
 };
 
 let readNote = title => {
-  console.log("個別メモ表示", title);
+  let notes = fetchNotes();
+  let filteredNotes = notes.filter(note => note.title === title);
+  return filteredNotes[0];
 };
 
 let removeNote = title => {
@@ -52,10 +54,17 @@ let removeNote = title => {
   return notes.length !== filteredNotes.length;
 };
 
+let logNotes = note => {
+  console.log("-------------");
+  console.log(`タイトル；${note.title}`);
+  console.log(`内容；${note.body}`);
+};
+
 module.exports = {
   addNote,
   showAll,
   readNote,
-  removeNote
+  removeNote,
+  logNotes
 
 };
