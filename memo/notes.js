@@ -1,4 +1,4 @@
-console.log("notes.js開始");
+// console.log("notes.js開始");
 
 const fs = require("fs");
 
@@ -35,7 +35,7 @@ let addNote = (title, body) => {
 };
 
 let showAll = () => {
-  console.log("全メモ一覧を表示");
+  return fetchNotes();
 };
 
 let readNote = title => {
