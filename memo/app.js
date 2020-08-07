@@ -10,7 +10,15 @@ const argv = yargs.argv;
 let command = argv._[0];
 
 if (command === "add"){
-  notes.addNote(argv.title, argv.body);
+  let note = notes.addNote(argv.title, argv.body);
+  if (note){
+    console.log("保存されました。");
+    console.log("-------------");
+    console.log(`タイトル；${note.title}`);
+    console.log(`内容；${note.body}`);
+  } else {
+    console.log("タイトルが重複しています。");
+  }
 } else if (command === "list"){
   notes.showAll();
 } else if (command === "read"){
